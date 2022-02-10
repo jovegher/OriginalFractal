@@ -1,15 +1,33 @@
 public void setup() {
-  size(1000, 1000); 
-}
-public void draw() {
+  size(500, 500);
   background(0);
-  myFractal(500,500,500);
+  rectMode(CENTER);
 }
-public void myFractal(int x, int y, int siz) {
-  if(siz > 10) {
-    myFractal(x-siz / 2, x, siz / 2);
-    myFractal(x+siz / 2, y, siz / 2);
-    myFractal(y-siz / 2, x, siz / 2);
-    myFractal(y+siz / 2, y, siz / 2);
+
+public void draw() {
+  noFill();
+  stroke(255);
+  fractal(250, 250, 250);
+}
+
+public void fractal(int x, int y, int size) {
+  quad(x + size, y, x - size, y, x - size, y - size, x, y);
+  if (size > 4) {
+    fractal(x + 40, y, size/2);
+    fractal(x - 40, y, size/2);
+    fractal(x, y + 40, size/2);
+    fractal(x, y - 40, size/2);
+    
+    fractal(x + 20, y, size/4);
+    fractal(x - 20, y, size/4);
+    fractal(x, y + 20, size/4);
+    fractal(x, y - 20, size/4);
+    
+    fractal(x + 60, y, size/8);
+    fractal(x - 60, y, size/8);
+    fractal(x, y + 60, size/8);
+    fractal(x, y -6050, size/8);
+    
+    
   }
 }
